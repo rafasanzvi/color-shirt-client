@@ -8,7 +8,9 @@ const ShirtsListPage = () => {
 
         shirtsService
             .getShirts()
-            .then(response => console.log(response.data))
+            .then(response => {
+                console.log(response.data)
+            })
             .catch(err => console.error(err))
 
     }, [])
