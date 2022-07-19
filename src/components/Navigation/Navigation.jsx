@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Navigation = () => {
 
     return (
-        <Navbar bg="light" expand="md" fixed="top">
+        <Navbar bg="light" expand="md" /* fixed="top"  */>
             <Container>
 
                 <Link to="/">
