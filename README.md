@@ -4,6 +4,7 @@
 |---------------	|------------------------------------------------	
 | `/` 	| return home 	| 
 | `/shirts` 	| returns gallery shirt 	| 
+  `/create`  | create shirts
 | `/shirts/:id` 	| returns shirt details	| 
 | `/shirts/:id/edit` 	|edits shirts 	| 
 | `/register` 	| registers user 	| 
