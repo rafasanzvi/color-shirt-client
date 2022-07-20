@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { useEffect } from "react"
 import shirtsService from "../../services/shirt.services"
+import { Container, Row } from "react-bootstrap"
+import ShirtsList from "../../components/Navigation/ShirtsList/ShirtsList"
 
 
 const ShirtsListPage = () => {
@@ -11,16 +13,28 @@ const ShirtsListPage = () => {
 
         shirtsService
             .getShirts()
-            .then(response => {
-                console.log(response.data)
-                setShirtList(response.data)
+            .then(({ data }) => {
+                setShirtList(data)
             })
             .catch(err => console.error(err))
 
     }, [])
 
 
-    return (<h1>{shirtList[0]?.name}</h1>)
+    return (
+
+        <Container>
+
+            <h1>Shirts gallery</h1>
+
+            <hr />
+
+            <ShirtsList shirtList={shirtList} />
+
+        </Container>
+
+    )
+
 }
 
 export default ShirtsListPage
