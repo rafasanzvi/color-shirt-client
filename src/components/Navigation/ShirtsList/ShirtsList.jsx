@@ -1,25 +1,15 @@
-import { Col, Card, Button, Row } from "react-bootstrap"
+import { Col, Row } from "react-bootstrap"
+import ShirtCard from "../../ShirtCard/ShirtCard"
 
 const ShirtsList = ({ shirtList }) => {
 
     return (
         <Row>
             {
-                shirtList?.map(shirt => {
+                shirtList.map(shirt => {
                     return (
-
-                        <Col md={3}>
-                            <Card className="ShirtCard">
-                                <Card.Img variant="top" src={shirt.images} />
-                                <Card.Body>
-                                    <Card.Title>{shirt.name}</Card.Title>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.
-                                    </Card.Text>
-                                    <Button variant="dark">Details</Button>
-                                </Card.Body>
-                            </Card>
+                        <Col md={3} key={shirt._id}>
+                            <ShirtCard {...shirt} />
                         </Col>
                     );
                 })}

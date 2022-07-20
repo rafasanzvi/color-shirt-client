@@ -1,8 +1,9 @@
 import { useState } from "react"
 import { useEffect } from "react"
 import shirtsService from "../../services/shirt.services"
-import { Container, Row } from "react-bootstrap"
+import { Container } from "react-bootstrap"
 import ShirtsList from "../../components/Navigation/ShirtsList/ShirtsList"
+import Loader from "../../components/Loader/Loader"
 
 
 const ShirtsListPage = () => {
@@ -29,7 +30,9 @@ const ShirtsListPage = () => {
 
             <hr />
 
-            <ShirtsList shirtList={shirtList} />
+            {
+                shirtList.length ? <ShirtsList shirtList={shirtList} /> : <Loader />
+            }
 
         </Container>
 
