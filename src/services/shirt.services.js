@@ -13,7 +13,11 @@ class ShirtService {
         return this.api.get('/list')
 
     }
+    getOneShirt(shirt_id) {
 
+        return this.api.get(`/${shirt_id}`)
+
+    }
 }
 
 const shirtsService = new ShirtService()
