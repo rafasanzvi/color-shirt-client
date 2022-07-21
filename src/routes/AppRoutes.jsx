@@ -1,12 +1,13 @@
 import { Routes, Route } from "react-router-dom"
 import ShirtsListPage from "../pages/ShirtsListPage/ShirtsListPage"
 import ShirtDetails from "../pages/ShirtDetails/ShirtDetails"
+import HomePage from "../pages/HomePage/HomePage"
 
 const AppRoutes = () => {
 
     return (
         <Routes>
-            <Route path="/" element={<h1>Home</h1>} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/aboutUs" element={<h1>About us</h1>} />
             <Route path="/myProfile" element={<h1>My profile</h1>} />
             <Route path="/shirts" element={<ShirtsListPage />} />
