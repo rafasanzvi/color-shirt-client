@@ -18,6 +18,9 @@ class ShirtService {
         return this.api.get(`/${shirt_id}`)
 
     }
+    saveShirt(shirtData) {
+        return this.api.post('shirts/create', shirtData)
+    }
 }
 
 const shirtsService = new ShirtService()
