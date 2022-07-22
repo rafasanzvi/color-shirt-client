@@ -1,17 +1,18 @@
 import { Container } from "react-bootstrap"
-import ShirtForm from "../../components/ShirtForm/ShirtForm";
+import NewShirtForm from "../../components/NewShirtForm/NewShirtForm";
 
 
 const NewShirtPage = () => {
 
 
     return (
+
         <Container>
 
             <h1>Create a new shirt</h1>
             <hr />
 
-            <ShirtForm />
+            <NewShirtForm />
 
 
         </Container>

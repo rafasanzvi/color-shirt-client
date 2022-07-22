@@ -19,7 +19,7 @@ class ShirtService {
 
     }
     saveShirt(shirtData) {
-        return this.api.post('shirts/create', shirtData)
+        return this.api.post('/create', shirtData)
     }
 }
 

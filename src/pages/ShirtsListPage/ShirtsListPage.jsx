@@ -11,15 +11,17 @@ const ShirtsListPage = () => {
     const [shirtList, setShirtList] = useState([])
 
     useEffect(() => {
+        loadshirts()
+    }, [])
 
+    const loadshirts = () => {
         shirtsService
             .getShirts()
             .then(({ data }) => {
                 setShirtList(data)
             })
             .catch(err => console.error(err))
-
-    }, [])
+    }
 
 
     return (

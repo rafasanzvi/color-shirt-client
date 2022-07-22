@@ -2,7 +2,7 @@ import { Form, Button, Row, Col } from "react-bootstrap"
 import { useState } from "react"
 import shirtService from "../../services/shirt.services"
 
-const ShirtForm = () => {
+const NewShirtForm = () => {
 
     const [shirtData, setShirtData] = useState({
         name: '',
@@ -66,6 +66,42 @@ const ShirtForm = () => {
                 </Col>
             </Row>
 
+            {/* Origin */}
+            {/* <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Origin</Form.Label>
+                <Form.Control type="text" value={origin} onChange={handleChange} name="origin" />
+            </Form.Group> */}
+
+
+            <Form.Select aria-label="Default select example" controlId="formBasicPassword" onChange={handleChange} name="origin">
+                <Form.Label>Origin</Form.Label>
+                <option value={""}>Select origin</option>
+                <option value={"Africa"}>Africa</option>
+                <option value={"America"}>America</option>
+                <option value={"Europe"}>Europa</option>
+                <option value={"Asia"}>Asia</option>
+                <option value={"Oceania"}>Oceania</option>
+            </Form.Select>
+
+
+            <Form.Select aria-label="Default select example" controlId="formBasicPassword" onChange={handleChange} name="sizes">
+                <Form.Label>Sizes</Form.Label>
+                <option value={""}>Select size</option>
+                <option value={"S"}>S</option>
+                <option value={"M"}>M</option>
+                <option value={"L"}>L</option>
+                <option value={"XL"}>XL</option>
+            </Form.Select>
+
+
+
+
+            {/* Sizes */}
+            {/* <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Sizes</Form.Label>
+                <Form.Control type="select" value={sizes} onChange={handleChange} name="sizes" />
+            </Form.Group> */}
+
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Description</Form.Label>
                 <Form.Control type="text" value={description} onChange={handleChange} name="description" />
@@ -89,4 +125,4 @@ const ShirtForm = () => {
 
 }
 
-export default ShirtForm
+export default NewShirtForm

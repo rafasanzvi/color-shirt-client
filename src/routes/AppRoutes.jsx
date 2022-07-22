@@ -15,6 +15,7 @@ const AppRoutes = () => {
             <Route path="/create" element={<NewShirtPage />} />
             <Route path="/details/:shirt_id" element={<ShirtDetails />} />
             <Route path="/:shirt_id/edit" element={<h1>change a shirt</h1>} />
+            {/* falta ruta de 404 */}
         </Routes>
     )
 

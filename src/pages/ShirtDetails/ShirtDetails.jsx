@@ -14,25 +14,25 @@ const ShirtDetails = () => {
     const { shirt_id } = useParams()
 
     useEffect(() => {
+        loadShirtDetails()
+    }, [])
 
+    const loadShirtDetails = () => {
         shirtsService
             .getOneShirt(shirt_id)
-
             .then(({ data }) => {
                 console.log(data)
                 setShirt(data)
             })
             .catch(err => console.error(err))
-
-    }, [])
+    }
 
     return (
 
         <Container>
 
             {
-                !shirt
-                    ?
+                !shirt ?
                     <Loader />
                     :
                     <>
