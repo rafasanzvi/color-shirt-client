@@ -1,9 +1,15 @@
 import { Nav, Navbar, Container, NavDropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-/* import { AuthContext } from '../../contexts/auth.context'
-import { useContext } from 'react' */
+import { AuthContext } from '../../context/auth.context'
+import { useContext } from 'react'
 
 const Navigation = () => {
+
+    const { user, logoutUser } = useContext(AuthContext)
+
+    const logout = () => {
+        logoutUser()
+    }
 
     return (
         <Navbar bg="light" expand="md" className='mb-5' /* fixed="top"  */>
@@ -25,17 +31,17 @@ const Navigation = () => {
                             <Nav.Link as="span">About us</Nav.Link>
                         </Link>
 
-                        <Link to="/myProfile">
+                        {/* <Link to="/myProfile">
                             <Nav.Link as="span">My profile</Nav.Link>
-                        </Link>
+                        </Link> */}
 
-                        <Link to="/register">
+                        {/* <Link to="/register">
                             <Nav.Link as="span">Register</Nav.Link>
                         </Link>
 
                         <Link to="/login">
                             <Nav.Link as="span">Login</Nav.Link>
-                        </Link>
+                        </Link> */}
 
                         <NavDropdown title="Shirts" id="basic-nav-dropdown">
                             <Link to="/shirts">
@@ -45,6 +51,31 @@ const Navigation = () => {
                                 <Nav.Link as="span">New shirt</Nav.Link>
                             </Link>
                         </NavDropdown>
+
+
+                        {
+                            !user
+                                ?
+                                <>
+                                    <Link to="/register">
+                                        <Nav.Link as="span">Register</Nav.Link>
+                                    </Link>
+                                    <Link to="/login">
+                                        <Nav.Link as="span">Login</Nav.Link>
+                                    </Link>
+                                </>
+                                :
+                                <>
+                                    <Link to="/myProfile">
+                                        <Nav.Link as="span">My profile of {user.username}</Nav.Link>
+                                    </Link>
+                                    <Link to="/login">
+                                        <Nav.Link as="span" onClick={logout}>Close session</Nav.Link>
+                                    </Link>
+                                </>
+                        }
+
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>
