@@ -59,6 +59,10 @@ const ShirtDetails = () => {
                                     <Button variant="outline-secondary" as="div">Back to gallery</Button>
                                 </Link>
 
+                                <Link to="/:shirt_id/edit">
+                                    <Button variant="outline-secondary" as="div">Edit</Button>
+                                </Link>
+
                             </Col>
                         </Row>
                     </>
