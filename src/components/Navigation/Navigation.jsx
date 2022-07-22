@@ -1,5 +1,7 @@
 import { Nav, Navbar, Container, NavDropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+/* import { AuthContext } from '../../contexts/auth.context'
+import { useContext } from 'react' */
 
 const Navigation = () => {
 
@@ -25,6 +27,14 @@ const Navigation = () => {
 
                         <Link to="/myProfile">
                             <Nav.Link as="span">My profile</Nav.Link>
+                        </Link>
+
+                        <Link to="/register">
+                            <Nav.Link as="span">Register</Nav.Link>
+                        </Link>
+
+                        <Link to="/login">
+                            <Nav.Link as="span">Login</Nav.Link>
                         </Link>
 
                         <NavDropdown title="Shirts" id="basic-nav-dropdown">

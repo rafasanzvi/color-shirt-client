@@ -34,6 +34,16 @@ const NewShirtForm = () => {
 
     }
 
+
+    /* const refreshShirts = () => {
+
+    } */
+
+
+    /* const openForm = () => setShirtData(true)
+    const closeForm = () => setShirtData(false) */
+
+
     const { name, origin, style, colors, images, fabric, sizes, description } = shirtData
 
     return (
@@ -66,13 +76,6 @@ const NewShirtForm = () => {
                 </Col>
             </Row>
 
-            {/* Origin */}
-            {/* <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Origin</Form.Label>
-                <Form.Control type="text" value={origin} onChange={handleChange} name="origin" />
-            </Form.Group> */}
-
-
             <Form.Select aria-label="Default select example" controlId="formBasicPassword" onChange={handleChange} name="origin">
                 <Form.Label>Origin</Form.Label>
                 <option value={""}>Select origin</option>
@@ -92,15 +95,6 @@ const NewShirtForm = () => {
                 <option value={"L"}>L</option>
                 <option value={"XL"}>XL</option>
             </Form.Select>
-
-
-
-
-            {/* Sizes */}
-            {/* <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Sizes</Form.Label>
-                <Form.Control type="select" value={sizes} onChange={handleChange} name="sizes" />
-            </Form.Group> */}
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Description</Form.Label>
