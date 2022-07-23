@@ -6,6 +6,8 @@ import NewShirtPage from "../pages/NewShirtPage/NewShirtPage"
 import SignupPage from "../pages/SignupPage/SignupPage"
 import LoginPage from "../pages/LoginPage/LoginPage"
 import EditShirtForm from "../pages/editShirtPage/editShirtPage"
+import UserDetails from "../pages/UserDetails/UserDetails"
+import UserListPage from "../pages/UserListPage/UserListPage"
 
 const AppRoutes = () => {
 
@@ -20,16 +22,17 @@ const AppRoutes = () => {
             <Route path="/shirts" element={<ShirtsListPage />} />
             <Route path="/create" element={<NewShirtPage />} />
             <Route path="/details/:shirt_id" element={<ShirtDetails />} />
+            <Route path="/:shirt_id/edit" element={<EditShirtForm />} />
+            {/* Auth */}
             <Route path="/register" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/:shirt_id/edit" element={<EditShirtForm />} />
             {/* Users */}
-
+            <Route path="/details/:user_id" element={<UserDetails />} />
+            <Route path="/list" element={<UserListPage />} />
             {/* Error 404 */}
             <Route path="*" element={<h1>404</h1>} />
         </Routes>
     )
-
 }
 
 export default AppRoutes

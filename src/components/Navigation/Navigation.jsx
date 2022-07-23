@@ -74,8 +74,6 @@ const Navigation = () => {
                                     </Link>
                                 </>
                         }
-
-
                     </Nav>
                 </Navbar.Collapse>
             </Container>
