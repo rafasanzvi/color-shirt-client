@@ -53,7 +53,7 @@ const EditShirtForm = () => {
 
         shirtsService
             .editShirt(shirt_id, shirtData)
-            .then(() => navigate('/list'))  ///if it is does not work, i need to change the navigate in NewShirtForm
+            .then(() => navigate('/shirts'))  ///if it is does not work, i need to change the navigate in NewShirtForm
             .catch(err => console.error(err))
     }
 
