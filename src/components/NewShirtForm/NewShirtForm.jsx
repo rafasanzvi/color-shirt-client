@@ -1,6 +1,7 @@
 import { Form, Button, Row, Col } from "react-bootstrap"
 import { useState } from "react"
-import shirtService from "../../services/shirt.services"
+import shirtsService from "../../services/shirt.services"
+import { useNavigate } from "react-router-dom"
 
 const NewShirtForm = () => {
 
@@ -23,14 +24,16 @@ const NewShirtForm = () => {
         setShirtData({ ...shirtData, [name]: value })
     }
 
+    const navigate = useNavigate()
+
     const handleSubmit = e => {
 
         e.preventDefault()
 
-        shirtService
+        shirtsService
             .saveShirt(shirtData)
-            .then(() => console.log('what?????'))
-            .catch(ERR => console.error(ERR))
+            .then(() => navigate('/list'))
+            .catch(err => console.error(err))
 
     }
 
@@ -76,7 +79,7 @@ const NewShirtForm = () => {
                 </Col>
             </Row>
 
-            <Form.Select aria-label="Default select example" controlId="formBasicPassword" onChange={handleChange} name="origin">
+            <Form.Select aria-label="Default select example" controlId="formBasicPassword" onChange={handleChange} name="origin" value={origin}>
                 <Form.Label>Origin</Form.Label>
                 <option value={""}>Select origin</option>
                 <option value={"Africa"}>Africa</option>
@@ -87,7 +90,7 @@ const NewShirtForm = () => {
             </Form.Select>
 
 
-            <Form.Select aria-label="Default select example" controlId="formBasicPassword" onChange={handleChange} name="sizes">
+            <Form.Select aria-label="Default select example" controlId="formBasicPassword" onChange={handleChange} name="sizes" value={sizes}>
                 <Form.Label>Sizes</Form.Label>
                 <option value={""}>Select size</option>
                 <option value={"S"}>S</option>
