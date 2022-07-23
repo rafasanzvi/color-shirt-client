@@ -59,7 +59,6 @@ const EditShirtForm = () => {
 
     const { name, origin, style, colors, images, fabric, sizes, description } = shirtData
 
-
     return (
         <Form onSubmit={handleSubmit}>
 
@@ -119,10 +118,6 @@ const EditShirtForm = () => {
                 <Form.Control type="text" value={images} onChange={handleChange} name="images" />
             </Form.Group>
 
-
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
             <Button variant="secondary" type="submit">
                 Submit
             </Button>

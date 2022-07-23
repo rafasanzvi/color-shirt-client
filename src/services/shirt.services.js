@@ -23,7 +23,11 @@ class ShirtService {
     }
 
     editShirt(shirt_id, shirtData) {
-        return this.api.post(`/${shirt_id}`, shirtData) /* /: shirt_id / edit */
+        return this.api.put(`/${shirt_id}/edit`, shirtData)
+    }
+
+    deleteShirt(shirt_id) {
+        return this.api.delete(`/${shirt_id}/delete`)
     }
 }
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Container, Row, Col, Button } from "react-bootstrap"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import shirtsService from "../../services/shirt.services"
 import Loader from "../../components/Loader/Loader"
 import './ShirtDetails.css'
@@ -24,6 +24,16 @@ const ShirtDetails = () => {
                 console.log(data)
                 setShirt(data)
             })
+            .catch(err => console.error(err))
+    }
+
+    const navigate = useNavigate()
+
+    const handleDelete = () => {
+
+        shirtsService
+            .deleteShirt(shirt_id)
+            .then(() => navigate('/shirts'))
             .catch(err => console.error(err))
     }
 
@@ -59,21 +69,18 @@ const ShirtDetails = () => {
                                     <Button variant="outline-secondary" as="div">Back to gallery</Button>
                                 </Link>
 
-                                <Link to="/:shirt_id/edit">
+                                <Link to={`/${shirt_id}/edit`}>
                                     <Button variant="outline-secondary" as="div">Edit</Button>
                                 </Link>
+
+                                <Button variant="danger" as="div" onClick={handleDelete}>Delete</Button>
 
                             </Col>
                         </Row>
                     </>
             }
-
-
         </Container>
-
     )
-
-
 }
 
 export default ShirtDetails
