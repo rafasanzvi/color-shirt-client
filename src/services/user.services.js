@@ -9,15 +9,15 @@ class UsersService {
     }
 
     getUsers() {
-
         return this.api.get('/list')
-
     }
 
     getOneUser(user_id) {
-
         return this.api.get(`/${user_id}`)
+    }
 
+    deleteUser(user_id) {
+        return this.api.delete(`/${user_id}/delete`)
     }
 
 }

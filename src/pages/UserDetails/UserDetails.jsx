@@ -1,6 +1,6 @@
 import usersService from "../../services/user.services"
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { Container, Row, Col, Button } from "react-bootstrap"
 import Loader from "../../components/Loader/Loader"
 import { Link } from 'react-router-dom'
@@ -22,6 +22,16 @@ const UserDetails = () => {
                 console.log(data)
                 setUser(data)
             })
+            .catch(err => console.error(err))
+    }
+
+    const navigate = useNavigate()
+
+    const handleDelete = () => {
+
+        usersService
+            .deleteUser(user_id)
+            .then(() => navigate('/users'))
             .catch(err => console.error(err))
     }
 
@@ -60,9 +70,9 @@ const UserDetails = () => {
 
                                 {/* <Link to={`/${shirt_id}/edit`}>
                                     <Button variant="outline-secondary" as="div">Edit</Button>
-                                </Link>
+                                </Link> */}
 
-                                <Button variant="danger" as="div" onClick={handleDelete}>Delete</Button> */}
+                                <Button variant="danger" as="div" onClick={handleDelete}>Delete</Button>
 
                             </Col>
                         </Row>
