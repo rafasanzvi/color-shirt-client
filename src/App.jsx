@@ -1,8 +1,8 @@
 import './App.css';
 import Footer from './components/Navigation/Footer/Footer';
 import Navigation from './components/Navigation/Navigation';
+import UserMessage from './components/UserMessage/UserMessage';
 import AppRoutes from './routes/AppRoutes';
-
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
       <Navigation />
       <AppRoutes />
       <Footer />
+      <UserMessage />
     </>
   );
 }

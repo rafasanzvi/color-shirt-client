@@ -2,12 +2,15 @@ import { Nav, Navbar, Container, NavDropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../context/auth.context'
 import { useContext } from 'react'
+import { MessageContext } from '../../context/userMessage.context'
 
 const Navigation = () => {
 
     const { user, logoutUser } = useContext(AuthContext)
+    const { setShowMessage } = useContext(MessageContext)
 
     const logout = () => {
+        setShowMessage({ show: true, title: 'See you!', text: 'You have been successfully logged out' })
         logoutUser()
     }
 
@@ -31,17 +34,6 @@ const Navigation = () => {
                             <Nav.Link as="span">About us</Nav.Link>
                         </Link>
 
-                        {/* <Link to="/myProfile">
-                            <Nav.Link as="span">My profile</Nav.Link>
-                        </Link> */}
-
-                        {/* <Link to="/register">
-                            <Nav.Link as="span">Register</Nav.Link>
-                        </Link>
-
-                        <Link to="/login">
-                            <Nav.Link as="span">Login</Nav.Link>
-                        </Link> */}
 
                         <NavDropdown title="Shirts" id="basic-nav-dropdown">
                             <Link to="/shirts">
