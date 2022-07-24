@@ -17,7 +17,6 @@ const AppRoutes = () => {
             <Route path="/" element={<HomePage />} />
             {/* About Us */}
             <Route path="/aboutUs" element={<h1>About us</h1>} />
-            <Route path="/myProfile" element={<h1>My profile</h1>} />
             {/* Shirts */}
             <Route path="/shirts" element={<ShirtsListPage />} />
             <Route path="/create" element={<NewShirtPage />} />
@@ -27,8 +26,11 @@ const AppRoutes = () => {
             <Route path="/register" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
             {/* Users */}
-            <Route path="/details/:user_id" element={<UserDetails />} />
-            <Route path="/list" element={<UserListPage />} />
+            <Route path="/users" element={<UserListPage />} />
+            <Route path="/details/:user_id" element={<h1>I am the users details</h1>} />
+            <Route path="/:user_id/edit" element={<h1>I am the users edit</h1>} />
+            {/* My Profile */}
+            <Route path="/myProfile" element={<h1>My profile</h1>} />
             {/* Error 404 */}
             <Route path="*" element={<h1>404</h1>} />
         </Routes>

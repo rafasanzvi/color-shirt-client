@@ -11,6 +11,8 @@ const UserListPage = () => {
 
             <hr />
 
+            <p>No arriesgo usuario</p>
+
             {/* {
                 shirtList.length ? <ShirtsList shirtList={shirtList} /> : <Loader />
             } */}

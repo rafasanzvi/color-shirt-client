@@ -44,6 +44,15 @@ const Navigation = () => {
                             </Link>
                         </NavDropdown>
 
+                        <NavDropdown title="Users" id="basic-nav-dropdown">
+                            <Link to="/users">
+                                <Nav.Link as="span">User List</Nav.Link>
+                            </Link>
+                            {/* <Link to="/create">
+                                <Nav.Link as="span">New shirt</Nav.Link>
+                            </Link> */}
+                        </NavDropdown>
+
 
                         {
                             !user
