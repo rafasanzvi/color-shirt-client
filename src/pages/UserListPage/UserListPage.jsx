@@ -1,8 +1,23 @@
-import { Container } from "react-bootstrap"
+import { Container, Row } from "react-bootstrap"
 import usersService from "../../services/user.services"
 import Loader from "../../components/Loader/Loader"
+import { useState, useEffect } from "react"
+import UserList from "../../components/Navigation/UserList/UserList"
 
 const UserListPage = () => {
+
+    const [users, setUsers] = useState([])
+
+    useEffect(() => {
+        loadUsers()
+    }, [])
+
+    const loadUsers = () => {
+        usersService
+            .getUsers()
+            .then(({ data }) => setUsers(data))
+            .catch(err => console.log(err))
+    }
 
     return (
         <Container>
@@ -11,11 +26,9 @@ const UserListPage = () => {
 
             <hr />
 
-            <p>No arriesgo usuario</p>
-
-            {/* {
-                shirtList.length ? <ShirtsList shirtList={shirtList} /> : <Loader />
-            } */}
+            <Row>
+                <UserList users={users} />
+            </Row>
 
         </Container>
     )

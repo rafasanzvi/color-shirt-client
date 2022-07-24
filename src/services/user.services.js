@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-class UserService {
+class UsersService {
 
     constructor() {
         this.api = axios.create({
@@ -8,7 +8,7 @@ class UserService {
         })
     }
 
-    getUser() {
+    getUsers() {
 
         return this.api.get('/list')
 
@@ -22,6 +22,6 @@ class UserService {
 
 }
 
-const usersService = new UserService()
+const usersService = new UsersService()
 
 export default usersService

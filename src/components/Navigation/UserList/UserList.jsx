@@ -1,9 +1,20 @@
-import UserCard from "../../ShirtCard/ShirtCard"
+import UserCard from "../../UserCard/UserCard"
+import { Row, Col } from "react-bootstrap"
 
-const UserList = ({ UserList }) => {
+const UserList = ({ users }) => {
 
     return (
-        <h1>Vamooooooooooos</h1>
+        <Row>
+            {
+                users.map(user => {
+                    return (
+                        <Col md={3}>
+                            <UserCard {...user} />
+                        </Col>
+                    )
+                })
+            }
+        </Row>
     )
 }
 
