@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom"
-import { useState } from "react"
-import { useEffect } from "react"
+import { useState, useEffect } from "react"
 import shirtsService from "../../services/shirt.services"
 import { Form, Button, Row, Col } from "react-bootstrap"
 
@@ -24,7 +23,6 @@ const EditShirtForm = () => {
         shirtsService
             .getOneShirt(shirt_id)
             .then(({ data }) => {
-                console.log(data)
                 setShirtData({
                     name: data.name,
                     origin: data.origin,
@@ -42,7 +40,6 @@ const EditShirtForm = () => {
     const navigate = useNavigate()
 
     const handleChange = e => {
-
         const { value, name } = e.target
         setShirtData({ ...shirtData, [name]: value })
     }
@@ -53,7 +50,7 @@ const EditShirtForm = () => {
 
         shirtsService
             .editShirt(shirt_id, shirtData)
-            .then(() => navigate('/shirts'))  ///if it is does not work, i need to change the navigate in NewShirtForm
+            .then(() => navigate('/shirts'))
             .catch(err => console.error(err))
     }
 

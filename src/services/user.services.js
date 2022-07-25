@@ -6,6 +6,17 @@ class UsersService {
         this.api = axios.create({
             baseURL: `${process.env.REACT_APP_API_URL}/users`
         })
+
+        this.api.interceptors.request.use((config) => {
+
+            const storedToken = localStorage.getItem("authToken");
+
+            if (storedToken) {
+                config.headers = { Authorization: `Bearer ${storedToken}` }
+            }
+
+            return config
+        })
     }
 
     getUsers() {
@@ -22,6 +33,10 @@ class UsersService {
 
     deleteUser(user_id) {
         return this.api.delete(`/${user_id}/delete`)
+    }
+
+    addToFavorites(shirt_id) {
+        return this.api.put(`/addFav/${shirt_id}`)
     }
 
 }

@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 
 const ShirtCard = ({ images, name, _id }) => {
 
+    const addFavShirt = () => {
+        alert('HACEMPOS ESTA CAMISA FAVORITA')
+    }
 
     return (
         <Card className="ShirtCard mb-4">
@@ -20,6 +23,10 @@ const ShirtCard = ({ images, name, _id }) => {
                         <Button variant="outline-secondary" as="div">Details</Button>
                     </div>
                 </Link>
+                <div className="d-grid gap-2">
+                    <Button variant="outline-secondary" as="div" onClick={addFavShirt}>Add to favourite</Button>
+                </div>
+
             </Card.Body>
         </Card>
     )
