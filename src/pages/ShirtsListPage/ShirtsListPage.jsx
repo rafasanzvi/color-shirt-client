@@ -4,14 +4,17 @@ import shirtsService from "../../services/shirt.services"
 import { Container } from "react-bootstrap"
 import ShirtsList from "../../components/Navigation/ShirtsList/ShirtsList"
 import Loader from "../../components/Loader/Loader"
+import usersService from "../../services/user.services"
 
 
 const ShirtsListPage = () => {
 
     const [shirtList, setShirtList] = useState([])
+    const [favShirts, setFavShirts] = useState([])
 
     useEffect(() => {
         loadshirts()
+        loadfavshirts()
     }, [])
 
     const loadshirts = () => {
@@ -23,6 +26,14 @@ const ShirtsListPage = () => {
             .catch(err => console.error(err))
     }
 
+    const loadfavshirts = () => {
+        usersService
+            .getUserShirtFavs()
+            .then(({ data }) => {
+                setFavShirts(data)
+            })
+            .catch(err => console.error(err))
+    }
 
     return (
 
@@ -33,7 +44,7 @@ const ShirtsListPage = () => {
             <hr />
 
             {
-                shirtList.length ? <ShirtsList shirtList={shirtList} /> : <Loader />
+                shirtList.length ? <ShirtsList shirtList={shirtList} favShirts={favShirts} loadfavshirts={loadfavshirts} /> : <Loader />
             }
 
         </Container>

@@ -2,3 +2,7 @@
     height: 340px;
     object-fit: cover;
 }
+
+.hide {
+    display: none;
+}

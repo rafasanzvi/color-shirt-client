@@ -14,7 +14,6 @@ class ShirtService {
             if (storedToken) {
                 config.headers = { Authorization: `Bearer ${storedToken}` }
             }
-
             return config
         })
     }

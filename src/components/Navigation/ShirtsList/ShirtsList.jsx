@@ -1,7 +1,7 @@
 import { Col, Row } from "react-bootstrap"
 import ShirtCard from "../../ShirtCard/ShirtCard"
 
-const ShirtsList = ({ shirtList }) => {
+const ShirtsList = ({ shirtList, favShirts, loadfavshirts }) => {
 
     return (
         <Row>
@@ -9,7 +9,7 @@ const ShirtsList = ({ shirtList }) => {
                 shirtList.map(shirt => {
                     return (
                         <Col md={3} key={shirt._id}>
-                            <ShirtCard {...shirt} />
+                            <ShirtCard {...shirt} favShirt={favShirts.includes(shirt._id)} loadfavshirts={loadfavshirts} />
                         </Col>
                     );
                 })}

@@ -39,6 +39,14 @@ class UsersService {
         return this.api.put(`/addFav/${shirt_id}`)
     }
 
+    removeToFavorites(shirt_id) {
+        return this.api.put(`/removeFav/${shirt_id}`)
+    }
+
+    getUserShirtFavs() {
+        return this.api.get('/getUserFavs')
+    }
+
 }
 
 const usersService = new UsersService()

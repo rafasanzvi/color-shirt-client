@@ -48,9 +48,6 @@ const Navigation = () => {
                             <Link to="/users">
                                 <Nav.Link as="span">User List</Nav.Link>
                             </Link>
-                            {/* <Link to="/create">
-                                <Nav.Link as="span">New shirt</Nav.Link>
-                            </Link> */}
                         </NavDropdown>
 
 
