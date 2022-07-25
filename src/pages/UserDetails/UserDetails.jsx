@@ -68,9 +68,9 @@ const UserDetails = () => {
                                     <Button variant="outline-secondary" as="div">Back to users</Button>
                                 </Link>
 
-                                {/* <Link to={`/${shirt_id}/edit`}>
+                                <Link to={`/editUser/${user_id}`}>
                                     <Button variant="outline-secondary" as="div">Edit</Button>
-                                </Link> */}
+                                </Link>
 
                                 <Button variant="danger" as="div" onClick={handleDelete}>Delete</Button>
 

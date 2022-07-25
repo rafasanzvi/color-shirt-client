@@ -16,6 +16,10 @@ class UsersService {
         return this.api.get(`/${user_id}`)
     }
 
+    editUser(user_id, userData) {
+        return this.api.put(`/editUser/${user_id}`, userData)
+    }
+
     deleteUser(user_id) {
         return this.api.delete(`/${user_id}/delete`)
     }
