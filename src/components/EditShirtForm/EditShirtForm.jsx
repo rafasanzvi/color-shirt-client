@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import shirtsService from "../../services/shirt.services"
 import { Form, Button, Row, Col } from "react-bootstrap"
+import uploadService from "../../services/upload.services"
 
 const EditShirtForm = () => {
 
@@ -55,6 +56,25 @@ const EditShirtForm = () => {
     }
 
     const { name, origin, style, colors, images, fabric, sizes, description } = shirtData
+
+    const [isLoading, setIsLoading] = useState(false)
+
+    const handleFileInput = e => {
+
+        setIsLoading(true)
+
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
+
+        uploadService
+            .uploadimage(formData)
+            .then(({ data }) => {
+                setIsLoading(false)
+                setShirtData({ ...shirtData, images: data.cloudinary_url })
+            })
+            .catch(err => console.error(err))
+    }
+
 
     return (
         <Form onSubmit={handleSubmit}>
@@ -110,9 +130,14 @@ const EditShirtForm = () => {
                 <Form.Control type="text" value={description} onChange={handleChange} name="description" />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            {/* <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Image</Form.Label>
                 <Form.Control type="text" value={images} onChange={handleChange} name="images" />
+            </Form.Group> */}
+
+            <Form.Group className="mb-3" controlId="images">
+                <Form.Label>Image</Form.Label>
+                <Form.Control type="file" onChange={handleFileInput} name="images" />
             </Form.Group>
 
             <Button variant="secondary" type="submit">

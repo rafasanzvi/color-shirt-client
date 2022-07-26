@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom"
 import { Container, Row, Col, Button } from "react-bootstrap"
 import Loader from "../../components/Loader/Loader"
 import { Link } from 'react-router-dom'
+import './UserDetails.css'
 
 const UserDetails = () => {
 
@@ -19,7 +20,7 @@ const UserDetails = () => {
         usersService
             .getOneUser(user_id)
             .then(({ data }) => {
-                console.log(data)
+                // console.log(data)
                 setUser(data)
             })
             .catch(err => console.error(err))
@@ -55,7 +56,7 @@ const UserDetails = () => {
             .catch(err => console.error(err))
     }
 
-
+    // console.log(user.favouriteShirts)
     return (
         <Container>
 
@@ -78,12 +79,12 @@ const UserDetails = () => {
                                 <p>{user.username}</p>
                                 <ul>
                                     <li>Email: {user.email}</li>
-                                    <li>Size:: {user.clientSize}</li>
+                                    <li>Size: {user.clientSize}</li>
                                     <li>Suscribed: {user.sizes}</li>
                                     <li>Date of birth: {user.dateOfBirth}</li>
                                     <li>Address: {user.address}</li>
-                                    <li>Favourites shirts: </li>
                                 </ul>
+
 
                                 {
                                     user.isSuscribed
@@ -105,7 +106,14 @@ const UserDetails = () => {
 
                             </Col>
                         </Row>
+
+                        <h1>My favourites shirts</h1>
+                        <hr />
+
+                        {user.favouriteShirts?.map(shirt => <h6 key={shirt._id}>{shirt.name}</h6>)}
+
                     </>
+
             }
         </Container>
     )

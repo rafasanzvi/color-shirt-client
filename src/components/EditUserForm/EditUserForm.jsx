@@ -2,6 +2,7 @@ import { Form, Button } from "react-bootstrap"
 import { useNavigate, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import usersService from '../../services/user.services'
+import uploadService from '../../services/upload.services'
 
 const EditUserForm = () => {
 
@@ -52,6 +53,24 @@ const EditUserForm = () => {
 
     const { name, username, email, address, images, sizes } = editUserData
 
+    const [isLoading, setIsLoading] = useState(false)
+
+    const handleFileInput = e => {
+
+        setIsLoading(true)
+
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
+
+        uploadService
+            .uploadimage(formData)
+            .then(({ data }) => {
+                setIsLoading(false)
+                setEditUserData({ ...editUserData, images: data.cloudinary_url })
+            })
+            .catch(err => console.error(err))
+    }
+
     return (
         <Form onSubmit={handleSubmit}>
 
@@ -75,9 +94,14 @@ const EditUserForm = () => {
                 <Form.Control type="text" name="address" value={address} onChange={handleChange} />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            {/* <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Image</Form.Label>
                 <Form.Control type="text" name="images" value={images} onChange={handleChange} />
+            </Form.Group> */}
+
+            <Form.Group className="mb-3" controlId="images">
+                <Form.Label>Image</Form.Label>
+                <Form.Control type="file" onChange={handleFileInput} name="images" />
             </Form.Group>
 
             <Form.Select aria-label="Default select example" controlId="formBasicPassword" name="sizes" value={sizes} onChange={handleChange}>
