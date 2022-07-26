@@ -80,11 +80,10 @@ const UserDetails = () => {
                                 <ul>
                                     <li>Email: {user.email}</li>
                                     <li>Size: {user.clientSize}</li>
-                                    <li>Suscribed: {user.sizes}</li>
+                                    <li>Suscribed: {user.isSuscribed}</li>
                                     <li>Date of birth: {user.dateOfBirth}</li>
                                     <li>Address: {user.address}</li>
                                 </ul>
-
 
                                 {
                                     user.isSuscribed
