@@ -44,7 +44,7 @@ const EditUserForm = () => {
     const handleSubmit = e => {
 
         e.preventDefault()
-
+        console.log(editUserData)
         usersService
             .editUser(user_id, editUserData)
             .then(() => navigate('/users'))
@@ -104,7 +104,7 @@ const EditUserForm = () => {
                 <Form.Control type="file" onChange={handleFileInput} name="images" />
             </Form.Group>
 
-            <Form.Select aria-label="Default select example" controlId="formBasicPassword" name="sizes" value={sizes} onChange={handleChange}>
+            <Form.Select aria-label="Default select example" controlId="formBasicPassword" name="clientSize" value={sizes} onChange={handleChange}>
                 <Form.Label>Sizes</Form.Label>
                 <option value={""}>Select size</option>
                 <option value={"S"}>S</option>

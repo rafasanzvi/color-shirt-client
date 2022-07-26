@@ -56,7 +56,7 @@ const UserDetails = () => {
             .catch(err => console.error(err))
     }
 
-    // console.log(user.favouriteShirts)
+    console.log(user)
     return (
         <Container>
 
@@ -80,7 +80,7 @@ const UserDetails = () => {
                                 <ul>
                                     <li>Email: {user.email}</li>
                                     <li>Size: {user.clientSize}</li>
-                                    <li>Suscribed: {user.isSuscribed}</li>
+                                    <li>Suscribed: {user.isSuscribed}</li> {/* ternario para renderización */}
                                     <li>Date of birth: {user.dateOfBirth}</li>
                                     <li>Address: {user.address}</li>
                                 </ul>
