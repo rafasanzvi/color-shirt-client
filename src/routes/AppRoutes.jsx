@@ -28,7 +28,7 @@ const AppRoutes = () => {
             <Route path="/login" element={<LoginPage />} />
             {/* Users */}
             <Route path="/users" element={<UserListPage />} />
-            <Route path="/:user_id" element={<UserDetails />} />
+            <Route path="/users/:user_id" element={<UserDetails />} />
             <Route path="/editUser/:user_id" element={<EditUserPage />} />
             {/* My Profile */}
             <Route path="/myProfile" element={<h1>My profile</h1>} />

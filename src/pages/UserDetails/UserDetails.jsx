@@ -35,6 +35,27 @@ const UserDetails = () => {
             .catch(err => console.error(err))
     }
 
+    const subscription = () => {
+
+        usersService
+            .addToSubscribed()
+            .then(() => {
+                loadUserDetails()
+            })
+            .catch(err => console.error(err))
+    }
+
+    const unSubscription = () => {
+
+        usersService
+            .removeToSubscribed()
+            .then(() => {
+                loadUserDetails()
+            })
+            .catch(err => console.error(err))
+    }
+
+
     return (
         <Container>
 
@@ -63,6 +84,14 @@ const UserDetails = () => {
                                     <li>Address: {user.address}</li>
                                     <li>Favourites shirts: </li>
                                 </ul>
+
+                                {
+                                    user.isSuscribed
+                                        ?
+                                        <Button variant="outline-secondary" as="div" onClick={() => unSubscription()}>Cancel subscription</Button>
+                                        :
+                                        <Button variant="outline-secondary" as="div" onClick={() => subscription()}>Subscription</Button>
+                                }
 
                                 <Link to="/users">
                                     <Button variant="outline-secondary" as="div">Back to users</Button>

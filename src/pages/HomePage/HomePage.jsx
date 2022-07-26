@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Container, Button, Row, Col } from "react-bootstrap"
+import Subscription from '../../components/Subscription/Subscription'
 
 
 const HomePage = () => {
@@ -18,6 +19,7 @@ const HomePage = () => {
                     <Link to="#">
                         <Button variant="outline-secondary" as="div">Suscription</Button>
                     </Link>
+                    <Subscription />
                 </Col>
             </Row>
         </Container>

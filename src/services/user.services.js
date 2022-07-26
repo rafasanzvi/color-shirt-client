@@ -47,6 +47,14 @@ class UsersService {
         return this.api.get('/getUserFavs')
     }
 
+    addToSubscribed() {
+        return this.api.put('/addSubscription')
+    }
+
+    removeToSubscribed() {
+        return this.api.put('/removeSubscription')
+    }
+
 }
 
 const usersService = new UsersService()

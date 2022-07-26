@@ -64,8 +64,8 @@ const Navigation = () => {
                                 </>
                                 :
                                 <>
-                                    <Link to="/myProfile">
-                                        <Nav.Link as="span">My profile of {user.username}</Nav.Link>
+                                    <Link to={`/users/${user?._id}`}>
+                                        <Nav.Link as="span">Profile of {user.username}</Nav.Link>
                                     </Link>
                                     <Link to="/login">
                                         <Nav.Link as="span" onClick={logout}>Close session</Nav.Link>

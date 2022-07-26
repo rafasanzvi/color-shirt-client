@@ -11,7 +11,7 @@ const UserCard = ({ images, name, username, email, _id }) => {
                 <hr />
                 <Card.Text>Username: {username}</Card.Text>
                 <Card.Text>Email: {email}</Card.Text>
-                <Link to={`/${_id}`}>
+                <Link to={`/users/${_id}`}>
                     <div className="d-grid gap-2">
                         <Button variant="outline-secondary" as="div">Details</Button>
                     </div>
