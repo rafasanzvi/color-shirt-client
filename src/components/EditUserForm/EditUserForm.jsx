@@ -16,7 +16,8 @@ const EditUserForm = () => {
         email: '',
         address: '',
         images: '',
-        sizes: ''
+        sizes: '',
+        dateOfBirth: ''
     })
 
     useEffect(() => {
@@ -31,6 +32,7 @@ const EditUserForm = () => {
                     address: data.address,
                     images: data.images,
                     sizes: data.sizes,
+                    dateOfBirth: data.dateOfBirth
                 })
             })
             .catch(err => console.log(err))
@@ -51,7 +53,7 @@ const EditUserForm = () => {
             .catch(err => console.error(err))
     }
 
-    const { name, username, email, address, images, sizes } = editUserData
+    const { name, username, email, address, images, sizes, dateOfBirth } = editUserData
 
     const [isLoading, setIsLoading] = useState(false)
 
@@ -92,6 +94,11 @@ const EditUserForm = () => {
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Address</Form.Label>
                 <Form.Control type="text" name="address" value={address} onChange={handleChange} />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Date of birth</Form.Label>
+                <Form.Control type="date" name="dateOfBirth" value={dateOfBirth} onChange={handleChange} />
             </Form.Group>
 
             {/* <Form.Group className="mb-3" controlId="formBasicPassword">

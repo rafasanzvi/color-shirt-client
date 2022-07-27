@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import { Container, Row, Col, Button } from "react-bootstrap"
 import { useNavigate, useParams } from "react-router-dom"
 import shirtsService from "../../services/shirt.services"
 import Loader from "../../components/Loader/Loader"
 import './ShirtDetails.css'
 import { Link } from 'react-router-dom'
+import { AuthContext } from "../../context/auth.context"
 
 
 const ShirtDetails = () => {
+
+    const { user, logoutUser } = useContext(AuthContext)
 
     const [shirt, setShirt] = useState({})
 
@@ -69,12 +72,15 @@ const ShirtDetails = () => {
                                     <Button variant="outline-secondary" as="div">Back to gallery</Button>
                                 </Link>
 
-                                <Link to={`/${shirt_id}/edit`}>
-                                    <Button variant="outline-secondary" as="div">Edit</Button>
-                                </Link>
+                                {(user?.role === 'ADMIN') &&
+                                    <Link to={`/${shirt_id}/edit`}>
+                                        <Button variant="outline-secondary" as="div">Edit</Button>
+                                    </Link>
+                                }
 
-                                <Button variant="danger" as="div" onClick={handleDelete}>Delete</Button>
-
+                                {(user.role === 'ADMIN') &&
+                                    <Button variant="danger" as="div" onClick={handleDelete}>Delete</Button>
+                                }
                             </Col>
                         </Row>
                     </>

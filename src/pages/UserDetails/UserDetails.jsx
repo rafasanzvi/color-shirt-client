@@ -5,8 +5,14 @@ import { Container, Row, Col, Button } from "react-bootstrap"
 import Loader from "../../components/Loader/Loader"
 import { Link } from 'react-router-dom'
 import './UserDetails.css'
+import ShirtCard from "../../components/ShirtCard/ShirtCard"
+import '../../components/ShirtCard/ShirtCard.css'
+import dateFormat from 'dateformat';
+const { setShowMessage } = useContext(MessageContext)
 
 const UserDetails = () => {
+
+    const { setShowMessage } = useContext(MessageContext) //Por aquí
 
     const [user, setUser] = useState({})
 
@@ -20,7 +26,6 @@ const UserDetails = () => {
         usersService
             .getOneUser(user_id)
             .then(({ data }) => {
-                // console.log(data)
                 setUser(data)
             })
             .catch(err => console.error(err))
@@ -80,10 +85,17 @@ const UserDetails = () => {
                                 <ul>
                                     <li>Email: {user.email}</li>
                                     <li>Size: {user.clientSize}</li>
-                                    <li>Suscribed: {user.isSuscribed}</li> {/* ternario para renderización */}
+                                    {
+                                        user.isSuscribed
+                                            ?
+                                            <li>Suscribed: Yes</li>
+                                            :
+                                            <li>Suscribed: No</li>
+                                    }
                                     <li>Date of birth: {user.dateOfBirth}</li>
                                     <li>Address: {user.address}</li>
                                 </ul>
+
 
                                 {
                                     user.isSuscribed
@@ -93,30 +105,36 @@ const UserDetails = () => {
                                         <Button variant="outline-secondary" as="div" onClick={() => subscription()}>Subscription</Button>
                                 }
 
-                                <Link to="/users">
-                                    <Button variant="outline-secondary" as="div">Back to users</Button>
-                                </Link>
+                                {(user.role === 'ADMIN') &&
+                                    <Link to="/users">
+                                        <Button variant="outline-secondary" as="div">Back to users</Button>
+                                    </Link>
+                                }
 
-                                <Link to={`/editUser/${user_id}`}>
-                                    <Button variant="outline-secondary" as="div">Edit</Button>
-                                </Link>
+                                {(user.role === 'ADMIN') &&
+                                    <Link to={`/editUser/${user_id}`}>
+                                        <Button variant="outline-secondary" as="div">Edit</Button>
+                                    </Link>
+                                }
 
-                                <Button variant="danger" as="div" onClick={handleDelete}>Delete</Button>
+                                {(user.role === 'ADMIN') &&
+                                    <Button variant="danger" as="div" onClick={handleDelete}>Delete</Button>
+                                }
 
                             </Col>
                         </Row>
 
                         <h1>My favourites shirts</h1>
                         <hr />
+                        <Row className="favShirts-row">
+                            {user.favouriteShirts?.map(shirt => {
+                                return <Col md={3}><ShirtCard {...shirt} /></Col>
+                            })}
 
-                        {user.favouriteShirts?.map(shirt => <h6 key={shirt._id}>{shirt.name}</h6>)}
-
+                        </Row>
                     </>
-
             }
         </Container>
     )
-
 }
-
 export default UserDetails

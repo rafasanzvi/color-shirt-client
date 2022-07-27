@@ -2,3 +2,8 @@
     height: 340px;
     object-fit: cover;
 }
+
+.favShirts-row {
+    display: flex;
+    justify-content: center;
+}
