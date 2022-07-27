@@ -16,14 +16,16 @@ const HomePage = () => {
                     <Link to="/shirts">
                         <Button variant="outline-secondary" as="div">Back to gallery</Button>
                     </Link>
+
                     <Link to="#">
                         <Button variant="outline-secondary" as="div">Suscription</Button>
                     </Link>
+
+                    {/* Soy la suscription, posiblemente tendré que quitarlo */}
                     <Subscription />
                 </Col>
             </Row>
         </Container>
-
     )
 
 }

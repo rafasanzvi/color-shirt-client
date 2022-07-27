@@ -17,70 +17,70 @@ const Navigation = () => {
 
     return (
         <>
-            {user &&
-                <Navbar bg="light" expand="md" className='mb-5' /* fixed="top"  */>
-                    <Container>
-                        <Link to="/">
-                            <Navbar.Brand>Policroma</Navbar.Brand>
-                        </Link>
 
-                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                        <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav className="me-auto">
+            <Navbar bg="light" expand="md" className='mb-5' /* fixed="top"  */>
+                <Container>
+                    <Link to="/">
+                        <Navbar.Brand>Policroma</Navbar.Brand>
+                    </Link>
 
-                                <Link to="/">
-                                    <Nav.Link as="span">Home</Nav.Link>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto">
+
+                            <Link to="/">
+                                <Nav.Link as="span">Home</Nav.Link>
+                            </Link>
+
+                            <Link to="/aboutUs">
+                                <Nav.Link as="span">About us</Nav.Link>
+                            </Link>
+
+                            <NavDropdown title="Shirts" id="basic-nav-dropdown">
+                                <Link to="/shirts">
+                                    <Nav.Link as="span">Gallery</Nav.Link>
                                 </Link>
 
-                                <Link to="/aboutUs">
-                                    <Nav.Link as="span">About us</Nav.Link>
-                                </Link>
+                                {(user?.role === 'ADMIN') &&
+                                    <Link to="/create">
+                                        <Nav.Link as="span">New shirt</Nav.Link>
+                                    </Link>}
 
-                                <NavDropdown title="Shirts" id="basic-nav-dropdown">
-                                    <Link to="/shirts">
-                                        <Nav.Link as="span">Gallery</Nav.Link>
+                            </NavDropdown>
+
+                            {(user?.role === 'ADMIN') &&
+                                <NavDropdown title="Users" id="basic-nav-dropdown">
+                                    <Link to="/users">
+                                        <Nav.Link as="span">User List</Nav.Link>
                                     </Link>
+                                </NavDropdown>}
 
-                                    {(user.role === 'ADMIN') &&
-                                        <Link to="/create">
-                                            <Nav.Link as="span">New shirt</Nav.Link>
-                                        </Link>}
-
-                                </NavDropdown>
-
-                                {(user.role === 'ADMIN') &&
-                                    <NavDropdown title="Users" id="basic-nav-dropdown">
-                                        <Link to="/users">
-                                            <Nav.Link as="span">User List</Nav.Link>
+                            {
+                                !user
+                                    ?
+                                    <>
+                                        <Link to="/register">
+                                            <Nav.Link as="span">Register</Nav.Link>
                                         </Link>
-                                    </NavDropdown>}
+                                        <Link to="/login">
+                                            <Nav.Link as="span">Login</Nav.Link>
+                                        </Link>
+                                    </>
+                                    :
+                                    <>
+                                        <Link to={`/users/${user?._id}`}>
+                                            <Nav.Link as="span">Profile of {user.username}</Nav.Link>
+                                        </Link>
+                                        <Link to="/login">
+                                            <Nav.Link as="span" onClick={logout}>Close session</Nav.Link>
+                                        </Link>
+                                    </>
+                            }
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
 
-                                {
-                                    !user
-                                        ?
-                                        <>
-                                            <Link to="/register">
-                                                <Nav.Link as="span">Register</Nav.Link>
-                                            </Link>
-                                            <Link to="/login">
-                                                <Nav.Link as="span">Login</Nav.Link>
-                                            </Link>
-                                        </>
-                                        :
-                                        <>
-                                            <Link to={`/users/${user?._id}`}>
-                                                <Nav.Link as="span">Profile of {user.username}</Nav.Link>
-                                            </Link>
-                                            <Link to="/login">
-                                                <Nav.Link as="span" onClick={logout}>Close session</Nav.Link>
-                                            </Link>
-                                        </>
-                                }
-                            </Nav>
-                        </Navbar.Collapse>
-                    </Container>
-                </Navbar>
-            }
         </>
     )
 }
