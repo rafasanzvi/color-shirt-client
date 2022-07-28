@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 const stripePromise = loadStripe("pk_test_51LQASvFt66ClOg5rS1UO0NjCGmRe1DyvnwJsimoKzFWQM13XPkGiZvEwAR9jiRHogO4PMVgHLDjTuOmCxAnmS9Rl00PuJ59rR1")
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ setSuscriptionModal, closeModal }) => {
 
     const stripe = useStripe()
     const elements = useElements()
@@ -17,17 +17,24 @@ const CheckoutForm = () => {
             type: 'card',
             card: elements.getElement(CardElement)
         })
+
+    }
+
+    const fireFinalActions = () => {
+        setSuscriptionModal(false)
+        closeModal()
     }
 
     return (
         <form onSubmit={handleSubmit} className="CreditCard">
 
             <CardElement className='form-control' />
-            <Button variant="primary">Pay the subscription</Button>
+
+            <Button onClick={fireFinalActions} variant="primary">Pay the subscription</Button>
         </form>)
 }
 
-const Stripe = () => {
+const Stripe = ({ setSuscriptionModal }) => {
 
     const [showModal, setShowModal] = useState(true)
 
@@ -46,7 +53,7 @@ const Stripe = () => {
                     <Card>
                         <Card.Body>
                             <Card.Text>
-                                <CheckoutForm />
+                                <CheckoutForm setSuscriptionModal={setSuscriptionModal} closeModal={closeModal} />
                             </Card.Text>
                         </Card.Body>
                     </Card>

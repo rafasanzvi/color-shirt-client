@@ -1,0 +1,20 @@
+.index-container {
+    background: url(https://res.cloudinary.com/dxtrdchyq/image/upload/v1659022082/index-background_p7ci0u.jpg) no-repeat center / cover;
+    height: 95vh;
+}
+
+#title {
+    margin-top: 20px;
+    margin-left: 30px;
+    font-size: 60px;
+}
+
+#claim {
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+#home-link {
+    margin-left: 30px;
+}

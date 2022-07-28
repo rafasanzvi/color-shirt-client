@@ -8,14 +8,17 @@ import './UserDetails.css'
 import ShirtCard from "../../components/ShirtCard/ShirtCard"
 import '../../components/ShirtCard/ShirtCard.css'
 import { MessageContext } from "../../context/userMessage.context"
+import { AuthContext } from "../../context/auth.context"
 import { getFullDate } from "../../utils/dateFormatter"
 import Stripe from "../../components/Stripe/Stripe"
 
 const UserDetails = () => {
 
-    const { setShowMessage } = useContext(MessageContext) //Por aquí
+    const { setShowMessage } = useContext(MessageContext)
+    const { user: loggedUser } = useContext(AuthContext)
 
-    const [user, setUser] = useState({})
+
+    const [profileUser, setProfileUser] = useState({})
     const [suscriptionModal, setSuscriptionModal] = useState(false)
 
     const { user_id } = useParams()
@@ -28,7 +31,7 @@ const UserDetails = () => {
         usersService
             .getOneUser(user_id)
             .then(({ data }) => {
-                setUser(data)
+                setProfileUser(data)
             })
             .catch(err => console.error(err))
     }
@@ -67,74 +70,70 @@ const UserDetails = () => {
             .catch(err => console.error(err))
     }
 
-    console.log(user)
     return (
         <>
             <Container>
 
                 {
-                    !user ?
+                    !loggedUser ?
                         <Loader />
                         :
                         <>
-                            <h1>{user.name}</h1>
+                            <h1>{profileUser.name}</h1>
                             <hr />
 
                             <Row className="UserDetails">
 
                                 <Col md={{ span: 4, offset: 1 }}>
-                                    <img src={user.images} />
+                                    <img src={profileUser.images} />
                                 </Col>
 
                                 <Col md={{ span: 6, offset: 1 }}>
                                     <h3>User</h3>
-                                    <p>{user.username}</p>
+                                    <p>{profileUser.username}</p>
                                     <ul>
-                                        <li>Email: {user.email}</li>
-                                        <li>Size: {user.clientSize}</li>
+                                        <li>Email: {profileUser.email}</li>
+                                        <li>Size: {profileUser.clientSize}</li>
                                         {
-                                            user.isSuscribed
+                                            profileUser.isSuscribed
                                                 ?
                                                 <li>Suscribed: Yes</li>
                                                 :
                                                 <li>Suscribed: No</li>
                                         }
-                                        <li>Date of birth: {getFullDate(user.dateOfBirth)}</li>
-                                        <li>Address: {user.address}</li>
+                                        <li>Date of birth: {getFullDate(profileUser.dateOfBirth)}</li>
+                                        <li>Address: {profileUser.address}</li>
                                     </ul>
 
 
-                                    {user.isSuscribed
+                                    {profileUser.isSuscribed
                                         ?
                                         <Button variant="outline-secondary" as="div" onClick={() => unSubscription()}>Cancel subscription</Button>
                                         :
                                         <Button variant="outline-secondary" as="div" onClick={() => subscription()}>Subscription</Button>
                                     }
 
-                                    {(user.role === 'ADMIN') &&
-                                        <Link to="/users">
-                                            <Button variant="outline-secondary" as="div">Back to users</Button>
-                                        </Link>
+                                    {
+                                        (loggedUser.role === 'ADMIN') &&
+                                        <>
+                                            <Link to="/users">
+                                                <Button variant="outline-secondary" as="div">Back to users</Button>
+                                            </Link>
+                                            <Link to={`/editUser/${user_id}`}>
+                                                <Button variant="outline-secondary" as="div">Edit</Button>
+                                            </Link>
+                                            <Button variant="danger" as="div" onClick={handleDelete}>Delete</Button>
+                                        </>
                                     }
-
-                                    {(user.role === 'ADMIN') &&
-                                        <Link to={`/editUser/${user_id}`}>
-                                            <Button variant="outline-secondary" as="div">Edit</Button>
-                                        </Link>
-                                    }
-
-                                    {(user.role === 'ADMIN') &&
-                                        <Button variant="danger" as="div" onClick={handleDelete}>Delete</Button>
-                                    }
-
                                 </Col>
                             </Row>
 
                             <h1>My favourites shirts</h1>
                             <hr />
                             <Row className="favShirts-row">
-                                {user.favouriteShirts?.map(shirt => {
-                                    return <Col md={3}><ShirtCard {...shirt} /></Col>
+
+                                {profileUser.favouriteShirts?.map(shirt => {
+                                    return <Col md={3}><ShirtCard {...shirt} favShirt={true} /></Col>
                                 })}
 
                             </Row>

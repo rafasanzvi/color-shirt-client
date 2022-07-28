@@ -2,15 +2,28 @@ import './ShirtCard.css'
 import { Card, Button } from "react-bootstrap"
 import { Link } from 'react-router-dom'
 import shirtsService from '../../services/user.services'
+import { MessageContext } from '../../context/userMessage.context'
+import { useContext } from "react"
+import { useState } from 'react'
+import { useEffect } from 'react'
 
 
-const ShirtCard = ({ images, name, _id, favShirt, loadfavshirts }) => {
+const ShirtCard = ({ images, name, _id, favShirt, loadfavshirts, description }) => {
+
+    const [localFav, setLocalFav] = useState(favShirt)
+    const { setShowMessage } = useContext(MessageContext)
+
+    useEffect(() => {
+        setLocalFav(favShirt)
+    }, [favShirt])
 
     const addFavShirt = shirt_id => {
         shirtsService
             .addToFavorites(shirt_id)
             .then(() => {
+                setLocalFav(true)
                 loadfavshirts()
+                setShowMessage({ show: true, title: 'Added to favorites :)', text: 'Now this shirt is in your profile' })
             })
             .catch(err => console.error(err))
     }
@@ -19,7 +32,9 @@ const ShirtCard = ({ images, name, _id, favShirt, loadfavshirts }) => {
         shirtsService
             .removeToFavorites(shirt_id)
             .then(() => {
+                setLocalFav(false)
                 loadfavshirts()
+                setShowMessage({ show: true, title: 'Remove from favorites :)', text: 'This shirt was deleted from your profile' })
             })
             .catch(err => console.error(err))
     }
@@ -31,8 +46,7 @@ const ShirtCard = ({ images, name, _id, favShirt, loadfavshirts }) => {
                 <Card.Title>{name}</Card.Title>
                 <hr />
                 <Card.Text>
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
+                    {description}
                 </Card.Text>
 
                 <Link to={`/details/${_id}`}>
@@ -41,13 +55,13 @@ const ShirtCard = ({ images, name, _id, favShirt, loadfavshirts }) => {
                     </div>
                 </Link>
 
-                {favShirt &&
+                {localFav &&
                     < div className="d-grid gap-2"  >
                         <Button variant="outline-secondary" as="div" onClick={() => removeFavShirt(_id)}>Remove fav</Button>
                     </div>
                 }
 
-                {!favShirt &&
+                {!localFav &&
                     <div className="d-grid gap-2" >
                         <Button variant="outline-secondary" as="div" onClick={() => addFavShirt(_id)} >Add fav</Button>
                     </div>
