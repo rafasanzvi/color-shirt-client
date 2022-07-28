@@ -41,7 +41,7 @@ const ShirtCard = ({ images, name, _id, favShirt, loadfavshirts, description }) 
 
     return (
         <Card className="ShirtCard mb-4">
-            <Card.Img variant="top" src={images} />
+            <Card.Img className='bg-image hover-zoom' variant="top" src={images} />
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
                 <hr />
@@ -66,7 +66,6 @@ const ShirtCard = ({ images, name, _id, favShirt, loadfavshirts, description }) 
                         <Button variant="outline-secondary" as="div" onClick={() => addFavShirt(_id)} >Add fav</Button>
                     </div>
                 }
-
             </Card.Body>
         </Card >
     )
