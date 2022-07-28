@@ -5,6 +5,7 @@ import { Container } from "react-bootstrap"
 import ShirtsList from "../../components/Navigation/ShirtsList/ShirtsList"
 import Loader from "../../components/Loader/Loader"
 import usersService from "../../services/user.services"
+import './ShirtListPage.css'
 
 
 const ShirtsListPage = () => {
@@ -37,7 +38,7 @@ const ShirtsListPage = () => {
 
     return (
 
-        <Container>
+        <Container className="index-container-shirt-list">
 
             <h1>Shirts gallery</h1>
 

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import usersService from '../../services/user.services'
 import uploadService from '../../services/upload.services'
+import './EditUserForm.css'
 
 const EditUserForm = () => {
 
@@ -74,7 +75,7 @@ const EditUserForm = () => {
     }
 
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} className="index-container-forms">
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Name</Form.Label>
@@ -121,7 +122,7 @@ const EditUserForm = () => {
             </Form.Select>
 
             <div className="d-grid">
-                <Button variant="dark" type="submit">Accept</Button>
+                <Button variant="secondary" type="submit">Accept</Button>
             </div>
 
         </Form>

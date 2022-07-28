@@ -1,9 +1,18 @@
 .UserDetails img {
     height: 340px;
     object-fit: cover;
+    border-radius: 200px;
 }
 
 .favShirts-row {
     display: flex;
     justify-content: center;
+}
+
+.index-container-user-details {
+    height: 200vh;
+}
+
+#h1-user-details {
+    margin-top: 40px;
 }

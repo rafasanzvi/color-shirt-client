@@ -32,10 +32,6 @@ const Navigation = () => {
                                 <Nav.Link as="span">Home</Nav.Link>
                             </Link>
 
-                            <Link to="/aboutUs">
-                                <Nav.Link as="span">About us</Nav.Link>
-                            </Link>
-
                             <NavDropdown title="Shirts" id="basic-nav-dropdown">
                                 <Link to="/shirts">
                                     <Nav.Link as="span">Gallery</Nav.Link>

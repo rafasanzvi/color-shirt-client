@@ -72,7 +72,7 @@ const UserDetails = () => {
 
     return (
         <>
-            <Container>
+            <Container className="index-container-user-details" >
 
                 {
                     !loggedUser ?
@@ -128,7 +128,7 @@ const UserDetails = () => {
                                 </Col>
                             </Row>
 
-                            <h1>My favourites shirts</h1>
+                            <h1 id="h1-user-details">My favourites shirts</h1>
                             <hr />
                             <Row className="favShirts-row">
 

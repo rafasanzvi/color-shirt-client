@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import shirtsService from "../../services/shirt.services"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import uploadService from "../../services/upload.services"
+import './EditShirtForm.css'
 
 const EditShirtForm = () => {
 
@@ -77,7 +78,7 @@ const EditShirtForm = () => {
 
 
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} className="index-container-forms">
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Name</Form.Label>
@@ -105,25 +106,29 @@ const EditShirtForm = () => {
                 </Col>
             </Row>
 
-            <Form.Select aria-label="Default select example" controlId="formBasicPassword" onChange={handleChange} name="origin" value={origin}>
-                <Form.Label>Origin</Form.Label>
-                <option value={""}>Select origin</option>
-                <option value={"Africa"}>Africa</option>
-                <option value={"America"}>America</option>
-                <option value={"Europe"}>Europa</option>
-                <option value={"Asia"}>Asia</option>
-                <option value={"Oceania"}>Oceania</option>
-            </Form.Select>
-
-
-            <Form.Select aria-label="Default select example" controlId="formBasicPassword" onChange={handleChange} name="sizes" value={sizes}>
-                <Form.Label>Sizes</Form.Label>
-                <option value={""}>Select size</option>
-                <option value={"S"}>S</option>
-                <option value={"M"}>M</option>
-                <option value={"L"}>L</option>
-                <option value={"XL"}>XL</option>
-            </Form.Select>
+            <Row>
+                <Col>
+                    <Form.Select aria-label="Default select example" controlId="formBasicPassword" onChange={handleChange} name="origin" value={origin}>
+                        <Form.Label>Origin</Form.Label>
+                        <option value={""}>Select origin</option>
+                        <option value={"Africa"}>Africa</option>
+                        <option value={"America"}>America</option>
+                        <option value={"Europe"}>Europa</option>
+                        <option value={"Asia"}>Asia</option>
+                        <option value={"Oceania"}>Oceania</option>
+                    </Form.Select>
+                </Col>
+                <Col>
+                    <Form.Select aria-label="Default select example" controlId="formBasicPassword" onChange={handleChange} name="sizes" value={sizes}>
+                        <Form.Label>Sizes</Form.Label>
+                        <option value={""}>Select size</option>
+                        <option value={"S"}>S</option>
+                        <option value={"M"}>M</option>
+                        <option value={"L"}>L</option>
+                        <option value={"XL"}>XL</option>
+                    </Form.Select>
+                </Col>
+            </Row>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Description</Form.Label>

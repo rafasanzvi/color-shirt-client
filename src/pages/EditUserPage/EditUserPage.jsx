@@ -8,7 +8,7 @@ const EditUserPage = () => {
 
     return (
 
-        <Container>
+        <Container className="index-container-forms">
 
             <h1>Edit user</h1>
             <hr />

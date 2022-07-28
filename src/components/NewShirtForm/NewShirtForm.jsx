@@ -3,6 +3,7 @@ import { useState } from "react"
 import shirtsService from "../../services/shirt.services"
 import { useNavigate } from "react-router-dom"
 import uploadService from "../../services/upload.services"
+import './NewShirtForm.css'
 
 const NewShirtForm = () => {
 
@@ -99,30 +100,33 @@ const NewShirtForm = () => {
                 </Col>
             </Row>
 
-            <Form.Select aria-label="Default select example" controlId="origin" onChange={handleChange} name="origin" value={origin}>
-                <Form.Label>Origin</Form.Label>
-                <option value={""}>Select origin</option>
-                <option value={"Africa"}>Africa</option>
-                <option value={"America"}>America</option>
-                <option value={"Europe"}>Europa</option>
-                <option value={"Asia"}>Asia</option>
-                <option value={"Oceania"}>Oceania</option>
-            </Form.Select>
-
-
-            <Form.Select aria-label="Default select example" controlId="sizes" onChange={handleChange} name="sizes" value={sizes}>
-                <Form.Label>Sizes</Form.Label>
-                <option value={""}>Select size</option>
-                <option value={"S"}>S</option>
-                <option value={"M"}>M</option>
-                <option value={"L"}>L</option>
-                <option value={"XL"}>XL</option>
-            </Form.Select>
-
-            <Form.Group className="mb-3" controlId="description">
-                <Form.Label>Description</Form.Label>
-                <Form.Control type="text" value={description} onChange={handleChange} name="description" />
-            </Form.Group>
+            <Row>
+                <Col>
+                    <Form.Select aria-label="Default select example" controlId="origin" onChange={handleChange} name="origin" value={origin}>
+                        <Form.Label>Origin</Form.Label>
+                        <option value={""}>Select origin</option>
+                        <option value={"Africa"}>Africa</option>
+                        <option value={"America"}>America</option>
+                        <option value={"Europe"}>Europa</option>
+                        <option value={"Asia"}>Asia</option>
+                        <option value={"Oceania"}>Oceania</option>
+                    </Form.Select>
+                </Col>
+                <Col>
+                    <Form.Select aria-label="Default select example" controlId="sizes" onChange={handleChange} name="sizes" value={sizes}>
+                        <Form.Label>Sizes</Form.Label>
+                        <option value={""}>Select size</option>
+                        <option value={"S"}>S</option>
+                        <option value={"M"}>M</option>
+                        <option value={"L"}>L</option>
+                        <option value={"XL"}>XL</option>
+                    </Form.Select>
+                </Col>
+                <Form.Group className="mb-3" controlId="description">
+                    <Form.Label>Description</Form.Label>
+                    <Form.Control type="text" value={description} onChange={handleChange} name="description" />
+                </Form.Group>
+            </Row>
 
             {/* <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Image</Form.Label>
