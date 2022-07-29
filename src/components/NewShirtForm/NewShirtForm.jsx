@@ -72,7 +72,7 @@ const NewShirtForm = () => {
 
     return (
 
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} className="container-new-shirt-form">
 
             <Form.Group className="mb-3" controlId="name">
                 <Form.Label>Name</Form.Label>

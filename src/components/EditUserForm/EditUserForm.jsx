@@ -75,7 +75,7 @@ const EditUserForm = () => {
     }
 
     return (
-        <Form onSubmit={handleSubmit} className="index-container-forms">
+        <Form onSubmit={handleSubmit}>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Name</Form.Label>
@@ -107,23 +107,26 @@ const EditUserForm = () => {
                 <Form.Control type="text" name="images" value={images} onChange={handleChange} />
             </Form.Group> */}
 
+            <Form.Label>Image</Form.Label>
             <Form.Group className="mb-3" controlId="images">
-                <Form.Label>Image</Form.Label>
                 <Form.Control type="file" onChange={handleFileInput} name="images" />
             </Form.Group>
 
+            <Form.Label>Sizes</Form.Label>
             <Form.Select aria-label="Default select example" controlId="formBasicPassword" name="clientSize" value={sizes} onChange={handleChange}>
-                <Form.Label>Sizes</Form.Label>
                 <option value={""}>Select size</option>
                 <option value={"S"}>S</option>
                 <option value={"M"}>M</option>
                 <option value={"L"}>L</option>
                 <option value={"XL"}>XL</option>
             </Form.Select>
+            <br></br>
 
             <div className="d-grid">
                 <Button variant="secondary" type="submit">Accept</Button>
             </div>
+            <br></br>
+            <br></br>
 
         </Form>
     )

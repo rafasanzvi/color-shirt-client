@@ -78,7 +78,7 @@ const EditShirtForm = () => {
 
 
     return (
-        <Form onSubmit={handleSubmit} className="index-container-forms">
+        <Form onSubmit={handleSubmit}>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Name</Form.Label>

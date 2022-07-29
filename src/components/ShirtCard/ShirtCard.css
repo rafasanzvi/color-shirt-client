@@ -1,3 +1,23 @@
+.ShirtCard:hover {
+    animation-name: enlarge;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes enlarge {
+    from {
+        transform: scale(1, 1);
+    }
+
+    to {
+        transform: scale(1.05, 1.05);
+
+    }
+
+
+
+}
+
 .ShirtCard img {
     height: 340px;
     object-fit: cover;
@@ -6,3 +26,7 @@
 .hide {
     display: none;
 }
+
+/* .bg-image:hover {
+    height: 430px !important;
+} */

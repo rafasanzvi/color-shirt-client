@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap"
+import { Container, Row, Col } from "react-bootstrap"
 import EditUserForm from "../../components/EditUserForm/EditUserForm";
 
 
@@ -8,12 +8,20 @@ const EditUserPage = () => {
 
     return (
 
-        <Container className="index-container-forms">
+        <Container>
 
-            <h1>Edit user</h1>
-            <hr />
+            <Row>
 
-            <EditUserForm />
+                <Col md={{ offset: 3, span: 6 }}>
+
+                    <h1>Edit user</h1>
+                    <hr />
+
+                    <EditUserForm />
+
+                </Col>
+
+            </Row>
 
         </Container>
     );

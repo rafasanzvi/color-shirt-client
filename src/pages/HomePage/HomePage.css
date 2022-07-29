@@ -1,6 +1,13 @@
 .index-container {
     background: url(https://res.cloudinary.com/dxtrdchyq/image/upload/v1659022082/index-background_p7ci0u.jpg) no-repeat center / cover;
-    height: 95vh;
+    height: 110vh;
+}
+
+
+@media (max-width: 576px) {
+    .index-container {
+        height: 123vh;
+    }
 }
 
 #title {

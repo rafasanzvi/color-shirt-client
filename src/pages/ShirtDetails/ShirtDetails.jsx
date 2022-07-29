@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import { AuthContext } from "../../context/auth.context"
 
 
+
 const ShirtDetails = () => {
 
     const { user, logoutUser } = useContext(AuthContext)
@@ -78,7 +79,7 @@ const ShirtDetails = () => {
                                     </Link>
                                 }
 
-                                {(user.role === 'ADMIN') &&
+                                {(user?.role === 'ADMIN') &&
                                     <Button variant="danger" as="div" onClick={handleDelete}>Delete</Button>
                                 }
                             </Col>
